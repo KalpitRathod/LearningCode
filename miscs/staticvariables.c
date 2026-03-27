@@ -26,7 +26,25 @@ lore of static
 int func1(void){static int a=5; a++; return a;}
 int main {a=func1(void); printf("%d", a); //6 a=func1(void); printf("%d", a); //7}
 */
+int global_wala_variable = 3;
+
 #include <stdio.h>
-int func1(void){static int a=5; a++; return a;}
-int main() {int a=func1(); printf("%d", a); a=func1(); printf("%d", a); a=func1(); printf("%d", a); return 0;} 
+int func1(void){
+    static int a=5;
+    printf("%d\n", global_wala_variable);
+    a++; 
+    return a;
+}
+int main() {
+    int a=func1(); 
+    printf("%d", a); 
+    a=func1(); 
+    printf("%d", a); 
+    a=func1(); 
+    printf("%d", a); 
+    printf("\n", a); 
+    printf("%d", global_wala_variable);
+
+    return 0;
+} 
 //it will remeber its old value and skip the re-intialization as five if called second time
